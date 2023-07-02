@@ -11,3 +11,7 @@ terimakasih
 4. php artisan serve
 
 ![image](https://github.com/xdotcoid/crud/assets/46899506/15e598ec-54a8-4df8-8978-7d8b2d0e24c9)
+
+![code](https://github.com/xdotcoid/crud/assets/46899506/374537ea-0937-40f5-b1b9-6f76ede24e82)
+
+![code1](https://github.com/xdotcoid/crud/assets/46899506/4e971478-e47b-4415-8f7d-50e12d0f019e)
