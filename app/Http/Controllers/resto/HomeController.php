@@ -51,6 +51,11 @@ waktu_pesan<?", [Carbon::today()->subDays(6), Carbon::today()->addDays(1)])->cou
         $order_bulan_ini = Jual::whereRaw("status_jual='TIBA' AND waktu_pesan>=? AND 
 waktu_pesan<?", [Carbon::today()->firstOfMonth(), Carbon::today()
             ->firstOfMonth()->addMonths(1)])->count();
+
+        $pesananList = AlamatKirim::all();
+        $output = $this->generateOutput($pesananList);
+
+            
         return view('resto.home.index', compact(
             'juals',
             'status_jual',
@@ -59,7 +64,23 @@ waktu_pesan<?", [Carbon::today()->firstOfMonth(), Carbon::today()
             'rating_50',
             'rating_semua',
             'order_minggu_terakhir',
-            'order_bulan_ini'
+            'order_bulan_ini',
+            'pesananList',
+            'output'
         ));
+    }
+
+    private function generateOutput($pesananList)
+    {
+        $output = '';
+
+        foreach ($pesananList as $pesanan) {
+            // Kustomisasi logika untuk menghasilkan output yang diinginkan
+            $output .= 'Nama Konsumen: ' . $pesanan->nama_penerima . '<br>';
+            $output .= 'Alamat Konsumen: ' . $pesanan->alamat . '<br>';
+            $output .= '<br>';
+        }
+
+        return $output;
     }
 }

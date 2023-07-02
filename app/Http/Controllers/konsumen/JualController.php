@@ -179,7 +179,7 @@ class JualController extends Controller
         $jual->alamat_kirim_id = AlamatKirim::whereRaw(
             "konsumen_id=? AND is_default=1",
             [auth()->user()->id]
-        )->first()->id;
+        )->first();
         if ($jual == null) return redirect('/konsumen/order')->withErrors(
             ['msg' => 'Cart masih kosong']
         );

@@ -23,6 +23,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-4 pizza-card pizza-primary">
                 <div class="row" style="padding-left:5px;padding-right:20px">
                     <div class="col">
@@ -34,6 +35,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
         <div class="row">
             <div class="col-10">&nbsp;</div>
@@ -65,7 +68,8 @@
                         @endforeach
                     </ul>
                     @if ($cur->status_jual == 'PESAN')
-                        <form style="display:inline" method="POST" action="{{ url('resto/proses') . '/' . $cur->id }}">@csrf
+                        <form style="display:inline" method="POST" action="{{ url('resto/proses') . '/' . $cur->id }}">
+                            @csrf
                             <button class="btn btn-primary">TERIMA</button>
                         </form>
                     @endif
@@ -75,11 +79,13 @@
                         </form>
                     @endif
                     @if (in_array($cur->status_jual, ['PESAN', 'PROSES', 'SIAP', 'ANTAR']))
-                        <form style="display:inline" method="POST" action="{{ url('resto/cancel') . '/' . $cur->id }}">@csrf
+                        <form style="display:inline" method="POST" action="{{ url('resto/cancel') . '/' . $cur->id }}">
+                            @csrf
                             <button class="btn btn-danger" onclick="return confirm('Batalkan order?');">
                                 BATALKAN ORDER</button>
                         </form>
                     @endif
+
                     <a class="btn btn-primary" href="{{ url('resto/track') . '/' . $cur->id }}">TRACK</a>
                 </div>
             </div>
@@ -87,6 +93,45 @@
             <p class="pizza-danger">Tidak ada data</p>
         @endforelse
     </div>
+
+
+    {{-- 
+        logika dari output yang keluar dapat dilihat pada HomeController.php
+        untuk kode yang saya beri comments sama saja hanya kurang efektif
+        --}}
+    <div class="container">
+        <h1>Data Pesanan Admin</h1>
+
+        {{-- @if (count($pesananList) > 0)
+            <table class="">
+                <thead>
+                    <tr>
+                        <th>Nama Konsumen</th>
+                        <th>Nama Pesanan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($pesananList as $pesanan)
+                        <tr>
+                            <td>{{ $pesanan->nama_penerima }}</td>
+                            <td>{{ $pesanan->alamat }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table> <br><br><br>
+        @else
+            <p>Tidak ada data pesanan.</p>
+        @endif --}}
+
+        @if(!empty($output))
+        {!! $output !!}
+    @else
+        <p>Tidak ada data pesanan.</p>
+    @endif
+
+    </div>
+
+
     <script>
         function toggle_detail(id) {
             var obj_id = 'detail' + id;

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlamatKirim extends Model
 {
-    use HasFactory;
+    protected $fillable = ['nama_konsumen', 'nama', 'harga']; // Tambahkan 'nama_konsumen' pada $fillable
+
+    // ...
 }
