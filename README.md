@@ -4,10 +4,7 @@ Untuk membuka bagian konsumen/pembeli (konsumen/home) (konsumen/alamatkirim) (ko
 sesuaikan dengan routes yang ada
 
 jika terjadi error bisa clone repo
-git clone
-lalu install node module
-npm i
-selanjutnya run dengan command
-npm run dev
-jalankan php serve
-php artisan serve
+1. git clone https://github.com/xdotcoid/xdotcoid.github.io.git
+2. npm i
+3. npm run dev
+4. php artisan serve
